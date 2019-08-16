@@ -1,0 +1,27 @@
+server:
+  port: 8004
+
+spring:
+  application:
+    name: com-auth-service
+  redis:
+    database: 0
+    host: 47.100.27.144
+    port: 6379
+    password:
+  datasource:
+#    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://47.100.27.144:3306/test?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123456
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+
+mybatis:
+  type-aliases-package: com.auth.service.dao
+  mapper-locations: classpath:mapper/*.xml
